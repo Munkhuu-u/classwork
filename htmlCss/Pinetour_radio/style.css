@@ -1,0 +1,348 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  margin: auto;
+  background-color: #f4f4f4;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  font-family: nicomojiFont;
+  color: white;
+  padding: 8px 0px 8px 0px;
+  margin-bottom: 80px;
+}
+.header .title {
+  display: flex;
+  flex-direction: column;
+}
+.header .title {
+  line-height: 19px;
+  font-size: 30px;
+}
+.header .pine {
+  position: relative;
+  left: 4.4px;
+}
+.header span {
+  color: #18ba51;
+}
+.container {
+  display: flex;
+  /* max-width: 800px; */
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.part1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 276px;
+}
+.part1 h1 {
+  max-width: 401px;
+  color: #303030;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 80px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+.part1_images {
+  display: flex;
+  gap: 66px;
+  border-radius: 12px;
+}
+.part1_image {
+  width: 250px;
+  height: 400px;
+  border-radius: 12px;
+  background: rgba(48, 48, 48, 0.3);
+}
+.part1_image img {
+  width: 100%;
+}
+.part2 {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 200px;
+  margin-bottom: 204px;
+}
+h2 {
+  width: 122px;
+  font-family: nicomojiFont;
+  color: #1ac74a;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+h3 {
+  width: 358px;
+  color: #303030;
+  font-family: Montserrat;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 114px;
+}
+.part2_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.part2_button {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  color: #303030;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 700;
+  border: solid 1px #101010;
+  border-radius: 8px;
+}
+.part2_days {
+  display: none;
+}
+.part2_button div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.part2_buttons :hover {
+  background-color: black;
+  color: white;
+}
+#hover_day1:hover ~ .part2_right {
+  background: url("./day1.png") center;
+  transition: background-image 0.5s;
+}
+#hover_day2:hover ~ .part2_right {
+  background: url("./day2.png") center;
+  transition: background-image 0.5s;
+}
+#hover_day3:hover ~ .part2_right {
+  background: url("./day3.png") center;
+  transition: background-image 0.5s;
+  opacity: 1;
+}
+#hover_day4:hover ~ .part2_right {
+  background: url("./day4.png") center;
+  transition: background-image 0.5s;
+}
+#hover_day5:hover ~ .part2_right {
+  background: url("./day1.png") center;
+  transition: background-image 0.5s;
+}
+#hover_day6:hover ~ .part2_right {
+  background: url("./day2.png") center;
+  transition: background-image 0.5s;
+}
+.part2_right {
+  height: 894px;
+  width: 600px;
+  background: url("./part2\ background.png") center;
+  border-radius: 12px;
+}
+.part2_right img {
+  height: 100%;
+}
+.part2_button .sightseen {
+  margin-bottom: 10px;
+}
+.part2_button .location {
+  color: #777;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+}
+.part3 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 131px;
+}
+.part3 h3 {
+  text-align: center;
+}
+.package {
+  display: flex;
+  gap: 20px;
+}
+.package div {
+  position: relative;
+  background-color: white;
+  width: 308px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 35px 35px 80px 35px;
+  border-radius: 8px;
+}
+h4 {
+  color: #303030;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 700;
+}
+.package ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.package ul li {
+  color: #777;
+  font-family: Montserrat;
+  font-size: 20px;
+}
+.package div:hover {
+  border-radius: 8px;
+  border: 2px solid #18ba51;
+}
+.package li:hover {
+  font-weight: 700;
+}
+.package_price {
+  position: absolute;
+  bottom: 20px;
+}
+.part4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  background-color: black;
+  color: white;
+}
+.par4_h4 {
+  color: white;
+}
+.part4 button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background: #18ba51;
+  border: solid 0px black;
+}
+.part4 a {
+  text-decoration: none;
+  color: white;
+}
+.part5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 80px 120px;
+  background-color: black;
+  border-top: solid 1px #1ac74a;
+}
+.part5_company_name {
+  color: white;
+  font-family: Montserrat;
+  font-size: 28px;
+  font-weight: 700;
+}
+.part5 .links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.part5 button {
+  display: flex;
+  min-height: 44px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: solid 0px black;
+  border-radius: 4px;
+  background: #303030;
+}
+.part5 button p {
+  color: white;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 700;
+}
+@font-face {
+  font-family: nicomojiFont;
+  src: url(./NicoMoji_font.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./Montserrat.ttf);
+}
+@media screen and (max-width: 900px) {
+  .header .title {
+    font-size: 13px;
+    line-height: 12px;
+  }
+  .header {
+    margin-bottom: 80px;
+  }
+  .title .pine {
+    left: 2px;
+  }
+  .part1 h1 {
+    font-size: 64px;
+    margin-bottom: 40px;
+  }
+  .part1 {
+    margin-bottom: 297px;
+  }
+  .part1_images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .part1_image {
+    width: 250px;
+    height: 250px;
+    border-radius: 12px;
+    background: rgba(48, 48, 48, 0.3);
+  }
+  .part1_image img {
+    display: block;
+    height: 100%;
+    gap: 66px;
+  }
+  .part2 {
+    display: flex;
+    gap: 0px;
+  }
+  .part2_right {
+    width: 0px;
+  }
+  .part2 .part2_destination {
+    margin-bottom: 100px;
+    font-size: 48px;
+  }
+  .part2 {
+    margin-bottom: 264px;
+  }
+  .package_price {
+    display: flex;
+    justify-content: left;
+  }
+  .part5 {
+    padding: 40px 30px 40px 30px;
+  }
+  h2 {
+    text-align: center;
+  }
+  .part2_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h3 {
+    text-align: center;
+  }
+  .part3 h3 {
+    margin-bottom: 80px;
+  }
+}

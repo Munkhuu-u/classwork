@@ -1,0 +1,95 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.violet {
+  background-color: violet;
+}
+.orange {
+  background-color: orange;
+}
+.neg {
+  height: window-inactive;
+}
+.noil {
+  display: flex;
+  background-color: purple;
+  height: 210px;
+  width: 280px;
+  gap: 20px;
+  padding: 40px 20px 50px 20px;
+}
+.negneg {
+  width: 110px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.neghoyr {
+  display: flex;
+  flex-direction: row;
+}
+.neghoyrneg {
+  margin-right: 10px;
+}
+.neghoyrnegneg {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.neghoyrneghoyr {
+  width: 50px;
+  height: 30px;
+}
+.neghoyrhoyr {
+  width: 50px;
+  height: 80px;
+}
+.hoyrneg {
+  display: flex;
+}
+.hoyrnegneg {
+  margin-right: 10px;
+}
+.hoyrnegnegneg {
+  height: 30px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrnegneghoyr {
+  height: 10px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrnegneguraw {
+  height: 20px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrneghoyrneg {
+  height: 40px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrneghoyrhoyr {
+  height: 15px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrneghoyrguraw {
+  height: 5px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.hoyrhoyr {
+  width: 110px;
+  height: 30px;
+}

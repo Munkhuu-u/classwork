@@ -1,0 +1,160 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.container{
+  max-width: 1180px;
+  margin: auto;
+}
+.header, .dropDownMenus, .quickMenus, .quickMenus div div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header{
+  padding-top: auto;
+  justify-content: space-around;
+  height: 90px;
+}
+.header .logo{
+  height: 40px;
+}
+.dropDownMenus{
+  gap: 40px;
+}
+.quickMenus{
+  gap: 20px;
+  display: flex;
+}
+.quickMenus > div > div, .quickMenu > p{
+  gap: 10px;
+  background-color: aqua;
+  text-align: center;
+  justify-content: space-around;
+}
+
+
+/* Highligh section commencement */ 
+.homeHl {
+  margin: auto;
+  width: 1115px;
+  height: 385px;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(
+    90deg,
+    rgba(244, 244, 244, 1) 0%,
+    rgba(255, 255, 255, 1) 40%
+  );
+  border-radius: 20px;
+}
+.homeHlLeft {
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 30px;
+  padding-right: 20px;
+}
+.homeHlLeft button {
+  border: none;
+  background: linear-gradient(
+    90deg,
+    rgb(204, 23, 38) 0%,
+    rgb(221, 114, 13) 100%
+  );
+  padding: 10px 20px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 100px;
+  transition: 0.2s;
+}
+
+.homeHlLeft button:hover {
+  border: none;
+  background: linear-gradient(
+    90deg,
+    rgb(204, 23, 38) 0%,
+    rgb(221, 114, 13) 100%
+  );
+  padding: 10px 30px;
+  transition: 0.2s;
+}
+.homeHlLeft h2 {
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+.homeHlLeftTopic {
+  margin-bottom: 20px;
+}
+.homeHlLeft h2:hover {
+  color: gray;
+  transition: 0.3s;
+}
+.homeHlLeftShare {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  color: rgb(85, 85, 85);
+}
+.homeHlLeftShare div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 100px;
+  padding: 5px 9px;
+  transition: 0.5s;
+  background-color: #f0efef;
+}
+.homeHlLeftShare div:hover {
+  padding: 5px 11px;
+  transition: 0.5s;
+  background-color: white;
+}
+.homeHlLeftShare div i {
+  transition: 0.5s;
+}
+.homeHlLeftShare div:hover > i {
+  transform: rotate(40deg);
+  transition: 0.5s;
+}
+.homeHlLeftShare p {
+  display: flex;
+  align-items: center;
+}
+.homeHlLeftShare div:hover > i {
+  transition: rotate 45deg;
+}
+.homeHlRight {
+  width: 55%;
+  background: url("../images/homeCoverHl.jpeg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  transition: 0.5s;
+}
+.homeHlRight:hover {
+  background: url("../images/homeCoverHl.jpeg");
+  background-position: center;
+  background-size: 110%;
+  transition: 0.5s;
+}
+.homeHlRight div {
+  background-color: rgba(159, 159, 159, 0);
+  border-radius: 30px;
+
+  color: rgba(255, 255, 255, 0);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.homeHlRight:hover > div {
+  background-color: rgba(159, 159, 159, 0.4);
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 1);
+  transition: 0.5s;
+}

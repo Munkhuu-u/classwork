@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Change Div Background Image on Button Hover (CSS and HTML only)
+    </title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: auto;
+      }
+      .container {
+        width: 300px;
+        height: 200px;
+        background-image: url("https://s3-alpha-sig.figma.com/img/36c1/1616/98ff94d4c5f5c10f8e675b44cd63d2cf?Expires=1700438400&Signature=c162HZVAfIPtEfJ~ojmaAQcKi1zkuFTJLRysa1QczkbDxfPoFgHGwPbakWi9hcAZxDXKOVWRi4njL0a9t7QuTID4xmptBOpD0umsIbQFTGZWF57p5QOkPPKHAuYPbSbeARoUeq-C2OE-AVw24iA0~H3~yj5T9v~oWmNYgNpUvlEMerhjPd-vbDqBVjdZ1hyv9W8NG~JDsnkaS3XwM4JJ3J0lPsWmh77rU9LASeGEL8vDNXZvEgh~2wTUlMH5wvTp-rpD9Q9TcKu4dDADW94uruSrydm2S345~WQSv1aOC4gaEZSj4cgLoY4r1J-H-uIl0l9DU3RDyrpC42tpEWS1~w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"); /* Initial background image */
+        background-size: cover;
+        transition: background-image 0.3s; /* Add a transition for a smooth effect */
+      }
+      .button-label {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        border: 2px solid black;
+        border-radius: 10px;
+        width: 400px;
+      }
+      #image1:hover ~ .container {
+        background-color: aqua;
+        background-image: url("https://s3-alpha-sig.figma.com/img/36c1/1616/98ff94d4c5f5c10f8e675b44cd63d2cf?Expires=1700438400&Signature=c162HZVAfIPtEfJ~ojmaAQcKi1zkuFTJLRysa1QczkbDxfPoFgHGwPbakWi9hcAZxDXKOVWRi4njL0a9t7QuTID4xmptBOpD0umsIbQFTGZWF57p5QOkPPKHAuYPbSbeARoUeq-C2OE-AVw24iA0~H3~yj5T9v~oWmNYgNpUvlEMerhjPd-vbDqBVjdZ1hyv9W8NG~JDsnkaS3XwM4JJ3J0lPsWmh77rU9LASeGEL8vDNXZvEgh~2wTUlMH5wvTp-rpD9Q9TcKu4dDADW94uruSrydm2S345~WQSv1aOC4gaEZSj4cgLoY4r1J-H-uIl0l9DU3RDyrpC42tpEWS1~w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+      }
+      #image2:hover ~ .container {
+        background-color: aqua;
+        background-image: url("https://s3-alpha-sig.figma.com/img/d2b9/7a2b/78cccaa3f6ec592813187ea25729681e?Expires=1700438400&Signature=FEcCAV0-VRH2lmUJIz9x4NsHZm76xCZfsI~PGPmWhtH0BWMxzv7iGiRwIC3kCTw3-dH5tQ1lLhhpWO4NlR-92A5oprOMM-2UdOOEPH-Q6PAdyrKIMs1pmfvSQAgH6vXIXsQ77xgV2Fx5DFknuBmT8Yn44wzzek7CxYegQ5xNWyBXM8urltq42OoMw28Sr5~RTikUhviWDUS-RmESqUtUMLvEBDn38IBwcVQFdU8Y~Nve8C9d3z5NzLZdVXdMENDEylA5kDhWSNyVaeKpN3O~CZaQIFrIRZaZemmNJgmyQs7-eL6-J7HQ8BD0qjqa1uZqzpzny00p3V6zqGaRBIu96g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+      }
+      #image3:hover ~ .container {
+        background-color: aqua;
+        background-image: url("https://s3-alpha-sig.figma.com/img/a4d6/0416/d42b9ac033e9ea4869926a93ad64d227?Expires=1700438400&Signature=StGTXdAf63G1~zIoSd9Amnu3n-QXTPK~Jgc2Rk41ODrgWNHcN6OH9b9amC3mrH77dT-02inrOLqcF8job96LdF9kJry-odn5BD4m2tvrcZVxt-DLeIYcsm1vMDfNwWaml5YIczH9JXtNR60x0bn~0rcoUiedDOa-YPZsvVnGlzHjxgXN3Vfw9jMBo6tjsuEI6fgCz9FXOlTW~jqJYq8dg-AAQbOQ2zeRQnG3r0Y0hupM7-bqEPw7ZOYQbBX1pAxnF6fDOilf0yS83RVEYI4BGWE1rhuCgIjpZXKiJNcpcJWdKt4X1Txoum7QBphft5ALD2DpcPz-D76LrQ~lRpC12w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+      }
+      #image4:hover ~ .container {
+        background-color: aqua;
+        background-image: url("https://s3-alpha-sig.figma.com/img/2a5f/56d0/b0fcdd92a44f32b79a0de512209bb06b?Expires=1700438400&Signature=a~u30QgyicYzTLDa2Rioh1VlTMauO1IXVzz6zZ-9fS29enhSHHScYtELXLK0ZtYNasolO-PokYE1Li0hAOTRmREX1glRWcMmpo8kpl6fW7M0OJbPG9KZAR1u3irST-ut73UkKcQ6NprjaN0WpY1apnr5iKWWKfMc-Iv2k11klWtvFkeMTXmqcGndGlnjcaSSbIppUR867jSF0eihZygXeF0H~GAEVT2pxSNXfjS9swHiwop6u0Vh1yYXUqTjvZSocaiG3lml~2Js~76W6CT4Sgdp8oNEicwwwMUCRCrScj8YCgqh8j6CUzcsniWR8NyyqBboa6BeLsYtoUoA9QxL8g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+      }
+      /* Hide radio buttons */
+      .image-radio {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; justify-content: space-between">
+      <div
+        style="display: flex; flex-direction: column; width: 250px; gap: 20px"
+      >
+        <label class="button-label" for="image1">Hover Me 1 </label>
+        <label class="button-label" for="image2">Hover Me 2</label>
+        <label class="button-label" for="image3">Hover Me 3</label>
+        <label class="button-label" for="image4">Hover Me 4</label>
+      </div>
+
+      <input
+        type="radio"
+        name="image"
+        class="image-radio"
+        id="image1"
+        checked
+      />
+      <input type="radio" name="image" class="image-radio" id="image2" />
+      <input type="radio" name="image" class="image-radio" id="image3" />
+      <input type="radio" name="image" class="image-radio" id="image4" />
+
+      <div class="container"></div>
+    </div>
+  </body>
+</html>

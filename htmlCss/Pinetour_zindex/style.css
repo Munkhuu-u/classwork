@@ -1,0 +1,67 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  margin: auto;
+  background-color: #f4f4f4;
+}
+.part2 {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 200px;
+  margin-bottom: 204px;
+}
+.part2_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.part2_button {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  color: #303030;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 700;
+  border: solid 1px #101010;
+  border-radius: 8px;
+}
+.part2_button div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.part2_right_img{
+  position: absolute;
+  height: 800px;
+  width: 100px;
+}
+.part2_left img{
+  width: 100%;
+}
+.part2_button1:hover ~ .part2_right_img1{
+  z-index: 1;
+}
+.part2_button2:hover ~ .part2_right_img2{
+  z-index: 1;
+}
+.part2_right {
+  height: 894px;
+  width: 600px;
+  border-radius: 12px;
+}
+.part2_right img {
+  height: 100%;
+}
+@font-face {
+  font-family: nicomojiFont;
+  src: url(./NicoMoji_font.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./Montserrat.ttf);
+}

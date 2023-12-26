@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <label for="num1"></label>
+      <input id="input1" type="text1" />
+    </div>
+    <div>
+      <label for="num2"></label>
+      <input id="input2" type="text2" />
+    </div>
+    <div>
+      <button id="id1" onclick="add()">+</button>
+      <button id="id2" onclick="subtract()">-</button>
+      <button id="id3" onclick="multiply()">*</button>
+      <button id="id4" onclick="divide()">/</button>
+    </div>
+    <div>
+      <p id="answer">-</p>
+    </div>
+    <div class="game">
+      <p class="gamename">
+        Munkhuu's game park <br />
+        Guess the number
+      </p>
+      <button class="button startButton" id="gameStarter" onclick="start()">
+        Start
+      </button>
+      <p class="randomNumber" id="randomNumber"></p>
+      <div class="inputSection">
+        <input type="number" id="insertedNumber" />
+        <button id="check" onclick="check()">check</button>
+      </div>
+      <p id="highOrLow">compare <br /></p>
+      <button class="button startButton" id="gameStarter" onclick="start()">
+        Reset
+      </button>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>

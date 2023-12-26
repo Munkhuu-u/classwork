@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="toggle_all" onclick="themeChange()">
+        <div class="toggle_img">
+            <div class="toggle_moving_area">
+                <button></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>    
+    function themeChange() {
+      const body = document.getElementsByTagName("body")[0];
+      body.classList.toggle("onposition");
+    }
+  </script>
+</html>

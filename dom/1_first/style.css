@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .randomNumber {
+    color: white;
+  }
+  
+  body,
+  body div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .game {
+    background-color: antiquewhite;
+    max-width: 800px;
+    padding: 0px 200px 100px 200px;
+  }
+  .gamename {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 36px;
+  }
+  
+  .game button {
+    background-color: white;
+    font-size: 20px;
+    border: none;
+    width: 80px;
+    height: 30px;
+    border-radius: 7px;
+  }
+  
+  .startButton {
+    width: 200px;
+  }
+  
+  .game button:active {
+    font-size: 18px;
+  }

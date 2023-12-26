@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.header {
+  background-color: aqua;
+}
+.header img {
+  background-color: navy;
+  width: 20%;
+}
+.dropdown {
+  background-color: blue;
+}
+.breifNews {
+  background-color: aquamarine;
+}

@@ -1,0 +1,22 @@
+.part1_background{
+    background-color: red;
+    max-width: 1200px;
+    height: 70px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    display: flex;
+}
+.logo_motto{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 157px;
+}
+.login{
+    display: flex;
+    flex-direction: row;
+    gap: 
+}

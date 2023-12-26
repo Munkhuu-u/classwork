@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* buh uyd ajillah heseg */
+#root {
+  height: 700px;
+}
+
+/* zowhon ehnii huudsand ajilllana */
+.initialPage {
+  background-color: darkgreen;
+  color: white;
+  font-weight: 1000px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.initialPage button {
+  height: 50px;
+  width: 70px;
+  border: solid 1px black;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+}
+
+/* togloomiin huudas */
+.gamePage {
+  padding: 50px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.gamePage div {
+  max-width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gameTableDiv {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 300px;
+}
+
+.gameTableDiv div {
+  /* background-color: aqua; */
+  height: 30%;
+  width: 30%;
+  border: solid 1px black;
+  border-radius: 10px;
+}
