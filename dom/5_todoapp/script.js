@@ -1,17 +1,10 @@
-//sequence
-//  first apperance, contains 4 card (header, input, add button), whole background image
-//  new todo window, contains header = todo name, desc, priority, status
-//
-//
-
-//cool features
-//
-//
 let root = document.getElementById("root");
-let cards = document.createElement("div");
-let cardName = ["To do", "In progress", "Stuck", "Done"];
+let cards;
 
 function interface() {
+  cards = document.createElement("div");
+  let cardName = ["To do", "In progress", "Stuck", "Done"];
+
   for (let i = 0; i < 4; i++) {
     let card = document.createElement("div");
     let headerDiv = document.createElement("div");
@@ -29,8 +22,7 @@ function interface() {
 
     header.innerText = `${cardName[i]}`;
     addButt.innerText = "+ Add card";
-    addButt.addEventListener("click", addtodo);
-
+    addButt.addEventListener("click", makeTaskDivshow);
     headerDiv.appendChild(header);
     headerDiv.appendChild(todoCount);
     card.appendChild(headerDiv);
@@ -41,31 +33,45 @@ function interface() {
   }
 }
 
-function addtodo() {
-  // todoes in to shown in card
-  // bainga baij l baidag window uusgene
+let task;
+function makeTaskDiv() {
+  let classnames = ["title", "desc", "status", "priority"];
+  let innerText = ["Title", "Description", "Status", "Priority"];
 
-  let task = document.createElement("div");
-  let title = document.createElement("input");
-  let desc = document.createElement("input");
-  let status = document.createElement("input");
-  let priority = document.createElement("input");
+  task = document.createElement("div");
+  task.setAttribute("class", "task");
+  let taskTitle = document.createElement("h2");
+  taskTitle.innerText = "Add task";
+  taskTitle.setAttribute("class", "taskTitle");
+  task.appendChild(taskTitle);
 
-  title.className = "title";
-  desc.className = "desc";
-  status.className = "status";
-  priority.className = "priority";
+  for (let i = 0; i < 4; i++) {
+    let input = document.createElement("input");
+    let label = document.createElement("label");
+    input.id = `${classnames[i]}`;
+    label.for = `${classnames[i]}`;
+    label.innerText = `${innerText[i]}`;
+    task.appendChild(label);
+    task.appendChild(input);
+  }
 
-  title.setAttribute("name", "");
-  desc.className = "desc";
-  status.className = "status";
-  priority.className = "priority";
+  let addTaskButt = document.createElement("button");
+  addTaskButt.innerText = "Add task";
+  addTaskButt.setAttribute("class", "addTaskButt");
 
-  task.appendChild(title);
-  task.appendChild(desc);
-  task.appendChild(status);
-  task.appendChild(priority);
+  task.appendChild(addTaskButt);
   root.appendChild(task);
 }
 
+function makeTaskDivshow() {
+  task.style.display = "flex";
+}
+
+function addTaskButtF() {
+  //status-aas ni hamaarch ali arra-ruu oroh we gedgiig ni shiidne.
+  //card bolgonii todo haragdaj baigaa hesgiig dawtalt ashiglaj shineer zurna.
+  //
+}
+
 interface();
+makeTaskDiv();
