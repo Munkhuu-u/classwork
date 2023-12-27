@@ -3,3 +3,34 @@
   margin: 0;
   padding: 0;
 }
+
+/*  card.className = "card";
+    headerDiv.className = "cardHeadDiv";
+    statusHeader.className = "statusHeader";
+    card.className = "card";
+    todoes.className = "todoes";*/
+
+body {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  background-image: url("./mountain.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.cards {
+  width: 880px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 10px;
+}
+
+.card {
+  width: 198px;
+  border: solid 1px black;
+  background-color: white;
+  border-radius: 10px;
+}
