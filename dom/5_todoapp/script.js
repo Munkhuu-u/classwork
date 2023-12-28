@@ -2,30 +2,10 @@ let root = document.getElementById("root");
 let cards;
 
 let receiver = new Object();
-let todoArr = new Array({
-  Title: "",
-  Description: "",
-  Status: "",
-  Priority: "",
-});
-let inprogArr = new Array({
-  Title: "",
-  Description: "",
-  Status: "",
-  Priority: "",
-});
-let stuckArr = new Array({
-  Title: "",
-  Description: "",
-  Status: "",
-  Priority: "",
-});
-let doneArr = new Array({
-  Title: "",
-  Description: "",
-  Status: "",
-  Priority: "",
-});
+let todoArr = new Array();
+let inprogArr = new Array();
+let stuckArr = new Array();
+let doneArr = new Array();
 
 let task;
 let classnames;
@@ -67,18 +47,19 @@ function todoesF() {
 let selectS;
 let selectP;
 function addTaskButtF() {
-  receiver[0] = document.getElementById(classnames[0]).value;
-  receiver[1] = document.getElementById(classnames[1]).value;
-  receiver[2] = selectS.value;
-  receiver[3] = selectP.value;
+  receiver[Title] = document.getElementById(classnames[0]).value;
+  receiver[Description] = document.getElementById(classnames[1]).value;
+  receiver[Status] = selectS.value;
+  receiver[Priority] = selectP.value;
+  console.log("selectP.value: ", selectP.value);
 
   if (selectS.value == "To do") {
     console.log("todoArr length:", todoArr.length);
-    console.log("todoArr:", todoArr);
-    todoArr[todoArr.length].Title = receiver[0]; // last update were deleting "-1" in order to make string able to get longer
-    todoArr[todoArr.length].Description = receiver[1];
-    todoArr[todoArr.length].Status = receiver[2];
-    todoArr[todoArr.length].Priority = receiver[3];
+    todoArr[todoArr.length] = receiver; // last update were deleting "-1" in order to make string able to get longer
+    console.log("consoling from todo card making todoArr:", todoArr);
+    // todoArr[todoArr.length].Description = receiver[1];
+    // todoArr[todoArr.length].Status = receiver[2];
+    // todoArr[todoArr.length].Priority = receiver[3];
   } else if (selectS.value == "In progress") {
     inprogArr[inprogArr.length].Title = receiver[0];
     inprogArr[inprogArr.length].Description = receiver[1];
