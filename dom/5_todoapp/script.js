@@ -1,49 +1,107 @@
 let root = document.getElementById("root");
 let cards;
 
-let receiver = new Object({});
-let todoArr = new Array([]);
-let inprogArr = new Array([]);
-let stuckArr = new Array([]);
-let doneArr = new Array([]);
-// console.log({ receiver });
-
-function interface() {
-  cards = document.createElement("div");
-  let cardName = ["To do", "In progress", "Stuck", "Done"];
-
-  for (let i = 0; i < 4; i++) {
-    let card = document.createElement("div");
-    let headerDiv = document.createElement("div");
-    let header = document.createElement("h2");
-    let todoCount = document.createElement("p");
-    let todoes = document.createElement("div");
-    let addButt = document.createElement("button");
-
-    card.className = "card";
-    cards.className = "cards";
-    headerDiv.className = "cardHeadDiv";
-    header.className = "header";
-    card.className = "card";
-    todoes.id = `todoes${i}`;
-
-    header.innerText = `${cardName[i]}`;
-    addButt.innerText = "+ Add card";
-    addButt.addEventListener("click", makeTaskDivshow);
-    headerDiv.appendChild(header);
-    headerDiv.appendChild(todoCount);
-    card.appendChild(headerDiv);
-    card.appendChild(todoes);
-    card.appendChild(addButt);
-    cards.appendChild(card);
-    root.appendChild(cards);
-  }
-}
+let receiver = new Object();
+let todoArr = new Array({
+  Title: "",
+  Description: "",
+  Status: "",
+  Priority: "",
+});
+let inprogArr = new Array({
+  Title: "",
+  Description: "",
+  Status: "",
+  Priority: "",
+});
+let stuckArr = new Array({
+  Title: "",
+  Description: "",
+  Status: "",
+  Priority: "",
+});
+let doneArr = new Array({
+  Title: "",
+  Description: "",
+  Status: "",
+  Priority: "",
+});
 
 let task;
 let classnames;
+function todoesF() {
+  console.log("todoesF ajillaj baina");
+  console.log("todoArr:", todoArr, typeof todoArr);
+  console.log("todoArr[0].Status:", todoArr[0].Status);
+  console.log("if 1st logic:", todoArr == "");
+  console.log("if 2nd logic:", selectS.value == "To do");
+
+  if (todoArr == "" && selectS.value == "To do") {
+    console.log("if ajillaj baina");
+    todoArr.map((e) => {
+      let todo = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      let p3 = document.createElement("p");
+      let p4 = document.createElement("p");
+
+      console.log("e.Title:", e.Title);
+      p1.innerText = e.Title;
+      p2.innerText = e.Description;
+      p3.innerText = e.Status;
+      p4.innerText = e.Priority;
+
+      todo.appendChild(p1);
+      todo.appendChild(p2);
+      todo.appendChild(p3);
+      todo.appendChild(p4);
+
+      let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+      console.log({ todoes });
+      todoes.appendChild(todo);
+    });
+  }
+  task.style.display = "none";
+}
+
 let selectS;
 let selectP;
+function addTaskButtF() {
+  receiver[0] = document.getElementById(classnames[0]).value;
+  receiver[1] = document.getElementById(classnames[1]).value;
+  receiver[2] = selectS.value;
+  receiver[3] = selectP.value;
+
+  if (selectS.value == "To do") {
+    console.log("todoArr length:", todoArr.length);
+    console.log("todoArr:", todoArr);
+    todoArr[todoArr.length].Title = receiver[0]; // last update were deleting "-1" in order to make string able to get longer
+    todoArr[todoArr.length].Description = receiver[1];
+    todoArr[todoArr.length].Status = receiver[2];
+    todoArr[todoArr.length].Priority = receiver[3];
+  } else if (selectS.value == "In progress") {
+    inprogArr[inprogArr.length].Title = receiver[0];
+    inprogArr[inprogArr.length].Description = receiver[1];
+    inprogArr[inprogArr.length].Status = receiver[2];
+    inprogArr[inprogArr.length].Priority = receiver[3];
+  } else if (selectS.value == "Stuck") {
+    stuckArr[stuckArr.length].Title = receiver[0];
+    stuckArr[stuckArr.length].Description = receiver[1];
+    stuckArr[stuckArr.length].Status = receiver[2];
+    stuckArr[stuckArr.length].Priority = receiver[3];
+  } else if (selectS.value == "Done") {
+    doneArr[doneArr.length].Title = receiver[0];
+    doneArr[doneArr.length].Description = receiver[1];
+    doneArr[doneArr.length].Status = receiver[2];
+    doneArr[doneArr.length].Priority = receiver[3];
+  }
+  todoesF();
+}
+
+function makeTaskDivshow() {
+  task.style.display = "flex";
+}
+
 function makeTaskDiv() {
   classnames = ["title", "desc", "status", "priority"];
   let innerText = ["Title", "Description", "Status", "Priority"];
@@ -90,7 +148,6 @@ function makeTaskDiv() {
   opt4.innerText = "Done";
 
   task.appendChild(label1);
-
   selectS.appendChild(opt1);
   selectS.appendChild(opt2);
   selectS.appendChild(opt3);
@@ -109,11 +166,10 @@ function makeTaskDiv() {
   let opt5 = document.createElement("option");
   let opt6 = document.createElement("option");
   let opt7 = document.createElement("option");
-  let opt8 = document.createElement("option");
 
-  opt5.setAttribute("value", "To do");
-  opt6.setAttribute("value", "In progress");
-  opt7.setAttribute("value", "Stuck");
+  opt5.setAttribute("value", "High");
+  opt6.setAttribute("value", "Medium");
+  opt7.setAttribute("value", "Low");
 
   opt5.innerText = "High";
   opt6.innerText = "Medium";
@@ -136,142 +192,36 @@ function makeTaskDiv() {
   root.appendChild(task);
 }
 
-function makeTaskDivshow() {
-  task.style.display = "flex";
-}
+function interface() {
+  cards = document.createElement("div");
+  let cardName = ["To do", "In progress", "Stuck", "Done"];
 
-function todoesF() {
-  if (todoArr != "" && selectS.value == "To do") {
-    todoArr.map((e) => {
-      let todo = document.createElement("div");
-      let p1 = document.createElement("p");
-      let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
-      let p4 = document.createElement("p");
-
-      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
-      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
-      p3.innerText = `${selectS.value}`;
-      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
-
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p3);
-      todo.appendChild(p4);
-
-      let todoes = document.getElementById("todoes0");
-      todoes.appendChild(todo);
-    });
-  }
-  if (todoArr != "" && selectS.value == "In progress") {
-    todoArr.map((e) => {
-      let todo = document.createElement("div");
-      let p1 = document.createElement("p");
-      let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
-      let p4 = document.createElement("p");
-
-      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
-      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
-      p3.innerText = `${selectS.values}`;
-      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
-
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p3);
-      todo.appendChild(p4);
-
-      console.log({ p1 });
-      console.log({ p2 });
-      console.log({ p3 });
-      console.log({ p4 });
-      let todoes = document.getElementById("todoes0");
-      todoes.appendChild(todo);
-    });
-  }
-  if (todoArr != "" && selectS.value == "Stuck") {
-    todoArr.map((e) => {
-      let todo = document.createElement("div");
-      let p1 = document.createElement("p");
-      let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
-      let p4 = document.createElement("p");
-
-      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
-      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
-      p3.innerText = `${selectS.values}`;
-      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
-
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p3);
-      todo.appendChild(p4);
-
-      console.log({ p1 });
-      console.log({ p2 });
-      console.log({ p3 });
-      console.log({ p4 });
-      let todoes = document.getElementById("todoes0");
-      todoes.appendChild(todo);
-    });
-  }
-  if (todoArr != "" && selectS.value == "Done") {
-    todoArr.map((e) => {
-      // console.log("todoesF dotroos hewlew todoArr:", todoArr);
-      // console.log(
-      //   "todoesF dotroos hewlew todoArr.Title:",
-      //   todoArr[todoArr.length - 1].Title
-      // );
-      console.log(todoArr.Description);
-      console.log(todoArr.Status);
-      console.log(todoArr.Priority);
-      let todo = document.createElement("div");
-      let p1 = document.createElement("p");
-      let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
-      let p4 = document.createElement("p");
-
-      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
-      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
-      p3.innerText = `${selectS.values}`;
-      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
-
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p3);
-      todo.appendChild(p4);
-
-      console.log({ p1 });
-      console.log({ p2 });
-      console.log({ p3 });
-      console.log({ p4 });
-      let todoes = document.getElementById("todoes0");
-      todoes.appendChild(todo);
-    });
-  }
-  task.style.display = "none";
-}
-
-function addTaskButtF() {
   for (let i = 0; i < 4; i++) {
-    let keyArr = ["Title", "Description", "Status", "Priority"];
-    receiver[0] = document.getElementById(classnames[0]).value;
-    receiver[1] = document.getElementById(classnames[1]).value;
-    console.log("selectS value:", selectS.value);
-    receiver[2] = selectS.value;
-    receiver[3] = selectP.value;
-  }
+    let card = document.createElement("div");
+    let headerDiv = document.createElement("div");
+    let header = document.createElement("h2");
+    let todoCount = document.createElement("p");
+    let todoes = document.createElement("div");
+    let addButt = document.createElement("button");
 
-  if (selectS.value == "To do") {
-    todoArr[todoArr.length - 1] = receiver;
-  } else if (selectS.value == "In progress") {
-    inprogArr[inprogArr.length - 1] = receiver;
-  } else if (selectS.value == "Stuck") {
-    stuckArr[stuckArr.length - 1] = receiver;
-  } else if (selectS.value == "Done") {
-    doneArr[doneArr.length - 1] = receiver;
+    card.className = "card";
+    cards.className = "cards";
+    headerDiv.className = "cardHeadDiv";
+    header.className = "header";
+    card.className = "card";
+    todoes.id = `todoes${i}`;
+
+    header.innerText = `${cardName[i]}`;
+    addButt.innerText = "+ Add card";
+    addButt.addEventListener("click", makeTaskDivshow);
+    headerDiv.appendChild(header);
+    headerDiv.appendChild(todoCount);
+    card.appendChild(headerDiv);
+    card.appendChild(todoes);
+    card.appendChild(addButt);
+    cards.appendChild(card);
+    root.appendChild(cards);
   }
-  todoesF();
 }
 
 interface();
