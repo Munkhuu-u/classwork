@@ -33,9 +33,10 @@ body {
   border: solid 1px black;
   background-color: white;
   border-radius: 10px;
+  height: fit-content;
 }
 .task {
-  display: none;
+  display: flex;
   flex-direction: column;
   width: 200px;
   margin: auto;

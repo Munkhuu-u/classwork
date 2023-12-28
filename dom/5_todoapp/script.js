@@ -42,6 +42,8 @@ function interface() {
 
 let task;
 let classnames;
+let selectS;
+let selectP;
 function makeTaskDiv() {
   classnames = ["title", "desc", "status", "priority"];
   let innerText = ["Title", "Description", "Status", "Priority"];
@@ -53,7 +55,7 @@ function makeTaskDiv() {
   taskTitle.setAttribute("class", "taskTitle");
   task.appendChild(taskTitle);
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     let input = document.createElement("input");
     let label = document.createElement("label");
     input.id = `${classnames[i]}`;
@@ -62,6 +64,68 @@ function makeTaskDiv() {
     task.appendChild(label);
     task.appendChild(input);
   }
+  // let input = document.createElement("input");
+  let label1 = document.createElement("label");
+
+  //STATUS SELECTOR
+  label1.for = `${classnames[2]}`;
+  label1.innerText = `${innerText[2]}`;
+  selectS = document.createElement("select");
+  selectS.setAttribute("name", `${innerText[2]}`);
+  selectS.setAttribute("id", `${innerText[2]}`);
+
+  let opt1 = document.createElement("option");
+  let opt2 = document.createElement("option");
+  let opt3 = document.createElement("option");
+  let opt4 = document.createElement("option");
+
+  opt1.setAttribute("value", "To do");
+  opt2.setAttribute("value", "In progress");
+  opt3.setAttribute("value", "Stuck");
+  opt4.setAttribute("value", "Done");
+
+  opt1.innerText = "To do";
+  opt2.innerText = "In progress";
+  opt3.innerText = "Stuck";
+  opt4.innerText = "Done";
+
+  task.appendChild(label1);
+
+  selectS.appendChild(opt1);
+  selectS.appendChild(opt2);
+  selectS.appendChild(opt3);
+  selectS.appendChild(opt4);
+  task.appendChild(selectS);
+
+  ///PRIOTITY SELECTOR
+
+  let label2 = document.createElement("label");
+  label2.for = `${classnames[3]}`;
+  label2.innerText = `${innerText[3]}`;
+  selectP = document.createElement("select");
+  selectP.setAttribute("name", `${innerText[2]}`);
+  selectP.setAttribute("id", `${innerText[2]}`);
+
+  let opt5 = document.createElement("option");
+  let opt6 = document.createElement("option");
+  let opt7 = document.createElement("option");
+  let opt8 = document.createElement("option");
+
+  opt5.setAttribute("value", "To do");
+  opt6.setAttribute("value", "In progress");
+  opt7.setAttribute("value", "Stuck");
+
+  opt5.innerText = "High";
+  opt6.innerText = "Medium";
+  opt7.innerText = "Low";
+
+  task.appendChild(label2);
+  selectP.appendChild(opt5);
+  selectP.appendChild(opt6);
+  selectP.appendChild(opt7);
+  task.appendChild(selectP);
+
+  // task.appendChild(selectP);
 
   let addTaskButt = document.createElement("button");
   addTaskButt.innerText = "Add task";
@@ -77,16 +141,8 @@ function makeTaskDivshow() {
 }
 
 function todoesF() {
-  if (todoArr != "" && todoArr[0].Status == "todo") {
+  if (todoArr != "" && selectS.value == "To do") {
     todoArr.map((e) => {
-      console.log("todoesF dotroos hewlew todoArr:", todoArr);
-      console.log(
-        "todoesF dotroos hewlew todoArr.Title:",
-        todoArr[todoArr.length - 1].Title
-      );
-      console.log(todoArr.Description);
-      console.log(todoArr.Status);
-      console.log(todoArr.Priority);
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
@@ -95,7 +151,29 @@ function todoesF() {
 
       p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
       p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
-      p3.innerText = `${todoArr[todoArr.length - 1].Status}`;
+      p3.innerText = `${selectS.value}`;
+      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
+
+      todo.appendChild(p1);
+      todo.appendChild(p2);
+      todo.appendChild(p3);
+      todo.appendChild(p4);
+
+      let todoes = document.getElementById("todoes0");
+      todoes.appendChild(todo);
+    });
+  }
+  if (todoArr != "" && selectS.value == "In progress") {
+    todoArr.map((e) => {
+      let todo = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      let p3 = document.createElement("p");
+      let p4 = document.createElement("p");
+
+      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
+      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
+      p3.innerText = `${selectS.values}`;
       p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
 
       todo.appendChild(p1);
@@ -111,27 +189,18 @@ function todoesF() {
       todoes.appendChild(todo);
     });
   }
-
-  if (inprogArr != "" && todoArr[0].Status == "in progress") {
-    inprogArr.map((e) => {
-      console.log("todoesF dotroos hewlew inprogArr:", inprogArr);
-      console.log(
-        "todoesF dotroos hewlew inprogArr.Title:",
-        inprogArr[inprogArr.length - 1].Title
-      );
-      console.log(inprogArr.Description);
-      console.log(inprogArr.Status);
-      console.log(inprogArr.Priority);
+  if (todoArr != "" && selectS.value == "Stuck") {
+    todoArr.map((e) => {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
       let p3 = document.createElement("p");
       let p4 = document.createElement("p");
 
-      p1.innerText = `${inprogArr[inprogArr.length - 1].Title}`;
-      p2.innerText = `${inprogArr[inprogArr.length - 1].Description}`;
-      p3.innerText = `${inprogArr[inprogArr.length - 1].Status}`;
-      p4.innerText = `${inprogArr[inprogArr.length - 1].Priority}`;
+      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
+      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
+      p3.innerText = `${selectS.values}`;
+      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
 
       todo.appendChild(p1);
       todo.appendChild(p2);
@@ -142,32 +211,30 @@ function todoesF() {
       console.log({ p2 });
       console.log({ p3 });
       console.log({ p4 });
-
-      let todoes = document.getElementById("todoes1");
+      let todoes = document.getElementById("todoes0");
       todoes.appendChild(todo);
     });
   }
-
-  if (stuckArr != "" && todoArr[0].Status == "stuck") {
-    stuckArr.map((e) => {
-      console.log("todoesF dotroos hewlew stuckArr:", stuckArr);
-      console.log(
-        "todoesF dotroos hewlew stuckArr.Title:",
-        stuckArr[stuckArr.length - 1].Title
-      );
-      console.log(stuckArr.Description);
-      console.log(stuckArr.Status);
-      console.log(stuckArr.Priority);
+  if (todoArr != "" && selectS.value == "Done") {
+    todoArr.map((e) => {
+      // console.log("todoesF dotroos hewlew todoArr:", todoArr);
+      // console.log(
+      //   "todoesF dotroos hewlew todoArr.Title:",
+      //   todoArr[todoArr.length - 1].Title
+      // );
+      console.log(todoArr.Description);
+      console.log(todoArr.Status);
+      console.log(todoArr.Priority);
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
       let p3 = document.createElement("p");
       let p4 = document.createElement("p");
 
-      p1.innerText = `${stuckArr[stuckArr.length - 1].Title}`;
-      p2.innerText = `${stuckArr[stuckArr.length - 1].Description}`;
-      p3.innerText = `${stuckArr[stuckArr.length - 1].Status}`;
-      p4.innerText = `${stuckArr[stuckArr.length - 1].Priority}`;
+      p1.innerText = `${todoArr[todoArr.length - 1].Title}`;
+      p2.innerText = `${todoArr[todoArr.length - 1].Description}`;
+      p3.innerText = `${selectS.values}`;
+      p4.innerText = `${todoArr[todoArr.length - 1].Priority}`;
 
       todo.appendChild(p1);
       todo.appendChild(p2);
@@ -178,93 +245,31 @@ function todoesF() {
       console.log({ p2 });
       console.log({ p3 });
       console.log({ p4 });
-
-      let todoes = document.getElementById("todoes2");
+      let todoes = document.getElementById("todoes0");
       todoes.appendChild(todo);
     });
   }
-
-  if (doneArr != "" && todoArr[0].Status == "done") {
-    doneArr.map((e) => {
-      console.log("todoesF dotroos hewlew doneArr:", doneArr);
-      console.log(
-        "todoesF dotroos hewlew doneArr.Title:",
-        doneArr[doneArr.length - 1].Title
-      );
-      console.log(doneArr.Description);
-      console.log(doneArr.Status);
-      console.log(doneArr.Priority);
-      let todo = document.createElement("div");
-      let p1 = document.createElement("p");
-      let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
-      let p4 = document.createElement("p");
-
-      p1.innerText = `${doneArr[doneArr.length - 1].Title}`;
-      p2.innerText = `${doneArr[doneArr.length - 1].Description}`;
-      p3.innerText = `${doneArr[doneArr.length - 1].Status}`;
-      p4.innerText = `${doneArr[doneArr.length - 1].Priority}`;
-
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p3);
-      todo.appendChild(p4);
-
-      console.log({ p1 });
-      console.log({ p2 });
-      console.log({ p3 });
-      console.log({ p4 });
-
-      let todoes = document.getElementById("todoes1");
-      todoes.appendChild(todo);
-    });
-  }
+  task.style.display = "none";
 }
 
 function addTaskButtF() {
-  //collect task's information into a object
-  //take criteria on status
-  //after 4 if condition move related one's array
-  //card bolgonii todo haragdaj baigaa hesgiig dawtalt ashiglaj shineer zurna
-  //erase all datas from add task and make them dissappear
-
   for (let i = 0; i < 4; i++) {
     let keyArr = ["Title", "Description", "Status", "Priority"];
-    console.log(
-      "barij awsan medeelel",
-      document.getElementById(classnames[i]).value
-    );
-    receiver[`${keyArr[i]}`] = document.getElementById(classnames[i]).value;
-    console.log("hiisen gazar ni", receiver);
-    console.log("receiver ", i, "=", receiver, typeof receiver, "    in for");
+    receiver[0] = document.getElementById(classnames[0]).value;
+    receiver[1] = document.getElementById(classnames[1]).value;
+    console.log("selectS value:", selectS.value);
+    receiver[2] = selectS.value;
+    receiver[3] = selectP.value;
   }
 
-  console.log("receiver ", "=", receiver, typeof receiver, "out of for");
-  console.log("receiver status:", receiver.Status, typeof receiver.Status);
-
-  if (receiver.Status == "todo") {
-    console.log("todo length", todoArr.length);
+  if (selectS.value == "To do") {
     todoArr[todoArr.length - 1] = receiver;
-    console.log({ receiver });
-    console.log("todo-g addtask fn-ees hewlew:", todoArr);
-  } else if (receiver.Status == "in progress") {
-    console.log(
-      "uul ni status ni in progress mon baina. daanch tsaashaa unshixggui baina"
-    );
-    console.log("todo length", todoArr.length);
+  } else if (selectS.value == "In progress") {
     inprogArr[inprogArr.length - 1] = receiver;
-    console.log({ receiver });
-    console.log({ inprogArr });
-  } else if (receiver.Status == "stuck") {
-    console.log("todo length", todoArr.length);
+  } else if (selectS.value == "Stuck") {
     stuckArr[stuckArr.length - 1] = receiver;
-    console.log({ receiver });
-    console.log({ stuckArr });
-  } else if (receiver.Status == "done") {
-    console.log("todo length", todoArr.length);
+  } else if (selectS.value == "Done") {
     doneArr[doneArr.length - 1] = receiver;
-    console.log({ receiver });
-    console.log({ doneArr });
   }
   todoesF();
 }
