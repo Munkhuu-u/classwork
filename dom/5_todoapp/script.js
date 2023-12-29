@@ -1,7 +1,7 @@
 let root = document.getElementById("root");
 let cards;
 
-let receiver = new Object();
+let receiver = {};
 let todoArr = new Array();
 let inprogArr = new Array();
 let stuckArr = new Array();
@@ -10,77 +10,76 @@ let doneArr = new Array();
 let task;
 let classnames;
 function todoesF() {
-  console.log("todoesF ajillaj baina");
-  console.log("todoArr:", todoArr, typeof todoArr);
-  console.log("todoArr[0].Status:", todoArr[0].Status);
-  console.log("if 1st logic:", todoArr == "");
-  console.log("if 2nd logic:", selectS.value == "To do");
+  console.log("consoling from todoesF selectP:", selectP);
+  console.log("consoling from todoesF selectS:", selectS);
+  console.log("consoling from todoesF receiver:", receiver);
+  console.log("consoling from todoesF todoArr:", todoArr);
 
-  if (todoArr == "" && selectS.value == "To do") {
-    console.log("if ajillaj baina");
+  if (todoArr != "" && selectS.value == "To do") {
+    let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+    todoes.innerHTML = "";
+    console.log("todoArr: ", todoArr);
     todoArr.map((e) => {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
-      let p3 = document.createElement("p");
       let p4 = document.createElement("p");
 
-      console.log("e.Title:", e.Title);
       p1.innerText = e.Title;
       p2.innerText = e.Description;
-      p3.innerText = e.Status;
       p4.innerText = e.Priority;
 
       todo.appendChild(p1);
       todo.appendChild(p2);
-      todo.appendChild(p3);
       todo.appendChild(p4);
 
-      let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
-      console.log({ todoes });
       todoes.appendChild(todo);
     });
   }
+
+  document.getElementById(classnames[0]).value = "";
+  document.getElementById(classnames[1]).value = "";
   task.style.display = "none";
 }
 
 let selectS;
 let selectP;
 function addTaskButtF() {
-  receiver[Title] = document.getElementById(classnames[0]).value;
-  receiver[Description] = document.getElementById(classnames[1]).value;
-  receiver[Status] = selectS.value;
-  receiver[Priority] = selectP.value;
-  console.log("selectP.value: ", selectP.value);
+  // console.log("receiver before assign new values", receiver);
+  // receiver = "";
+  console.log(
+    "document.getElementById(classnames[0]).value:",
+    document.getElementById(classnames[0]).value
+  );
+  receiver.Title = document.getElementById(classnames[0]).value;
+  // console.log("receiver.Title", receiver.Title);
+  receiver.Description = document.getElementById(classnames[1]).value;
+  receiver.Status = selectS.value;
+  receiver.Priority = selectP.value;
+  console.log("receiver after assign new values receiver:", receiver);
 
   if (selectS.value == "To do") {
-    console.log("todoArr length:", todoArr.length);
-    todoArr[todoArr.length] = receiver; // last update were deleting "-1" in order to make string able to get longer
-    console.log("consoling from todo card making todoArr:", todoArr);
-    // todoArr[todoArr.length].Description = receiver[1];
-    // todoArr[todoArr.length].Status = receiver[2];
-    // todoArr[todoArr.length].Priority = receiver[3];
+    console.log("consoling from addTaskButtf receiver:", receiver);
+    console.log(
+      "consoling from addTaskButtf before push value todoArr:",
+      todoArr
+    );
+    todoArr.push(receiver);
+    console.log("consoling from addTaskButtF todoArr:", todoArr);
   } else if (selectS.value == "In progress") {
-    inprogArr[inprogArr.length].Title = receiver[0];
-    inprogArr[inprogArr.length].Description = receiver[1];
-    inprogArr[inprogArr.length].Status = receiver[2];
-    inprogArr[inprogArr.length].Priority = receiver[3];
+    inprogArr.push(receiver);
   } else if (selectS.value == "Stuck") {
-    stuckArr[stuckArr.length].Title = receiver[0];
-    stuckArr[stuckArr.length].Description = receiver[1];
-    stuckArr[stuckArr.length].Status = receiver[2];
-    stuckArr[stuckArr.length].Priority = receiver[3];
+    stuckArr.push(receiver);
   } else if (selectS.value == "Done") {
-    doneArr[doneArr.length].Title = receiver[0];
-    doneArr[doneArr.length].Description = receiver[1];
-    doneArr[doneArr.length].Status = receiver[2];
-    doneArr[doneArr.length].Priority = receiver[3];
+    doneArr.push(receiver);
   }
+
   todoesF();
 }
 
 function makeTaskDivshow() {
   task.style.display = "flex";
+  console.log("todoArr:", todoArr);
 }
 
 function makeTaskDiv() {
@@ -207,3 +206,5 @@ function interface() {
 
 interface();
 makeTaskDiv();
+
+//1 torliin status deer 2 tood assign hiihed suuliin assign hiisenteigee adilhan bolchood baina.
