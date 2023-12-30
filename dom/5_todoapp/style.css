@@ -4,12 +4,6 @@
   padding: 0;
 }
 
-/*  card.className = "card";
-    headerDiv.className = "cardHeadDiv";
-    statusHeader.className = "statusHeader";
-    card.className = "card";
-    todoes.className = "todoes";*/
-
 body {
   display: flex;
   justify-content: center;
@@ -30,11 +24,19 @@ body {
 
 .card {
   width: 198px;
+  padding: 10px;
   border: solid 1px black;
-  background-color: white;
+  background-color: rgb(235, 236, 240);
   border-radius: 10px;
   height: fit-content;
 }
+
+.todoes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .task {
   display: none;
   flex-direction: column;
@@ -43,6 +45,17 @@ body {
   padding: 10px;
   background-color: rgb(173, 216, 230, 0.8);
 }
+
+.addButt {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  border: solid 1px rgb(173, 173, 173);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
 .task input,
 .task {
   border: solid 1px black;
@@ -59,4 +72,31 @@ body {
   border-radius: 10px;
   color: white;
   text-align: center;
+}
+.todo {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border: solid 1px black;
+  background-color: white;
+  border-radius: 10px;
+  align-items: top;
+}
+.todoRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.todoRight {
+  gap: 3px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 15px;
+}
+.todoRight > p {
+  border: solid 1px black;
+  border-radius: 5px;
+  width: fit-content;
 }

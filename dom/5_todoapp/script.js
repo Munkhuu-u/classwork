@@ -9,6 +9,7 @@ let doneArr = new Array();
 
 let task;
 let classnames;
+
 function todoesF() {
   console.log("consoling from todoesF selectP:", selectP);
   console.log("consoling from todoesF selectS:", selectS);
@@ -16,24 +17,61 @@ function todoesF() {
   console.log("consoling from todoesF todoArr:", todoArr);
 
   if (todoArr != "" && selectS.value == "To do") {
+    // duplicate this section after array changing bug cleared
     let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+    todoes.className = "todoes";
     todoes.innerHTML = "";
     console.log("todoArr: ", todoArr);
     todoArr.map((e) => {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
-      let p4 = document.createElement("p");
 
+      todo.setAttribute("class", "todo");
+
+      //todoes appearance code commence
+      let todoCheck = document.createElement("input");
+      let todoRight = document.createElement("div");
+      let todoHeader = document.createElement("div");
+      let todoDesc = document.createElement("div");
+      let todoPrior = document.createElement("p");
+      let tododelbutt = document.createElement("button");
+      let todoeditbutt = document.createElement("button");
+
+      tododelbutt.className = "todoDel";
+      todoeditbutt.className = "todoDel";
+      todoRight.className = "todoRight";
+      todoCheck.className = "todoCheck";
+      todoHeader.className = "todoRow";
+      todoDesc.className = "todoRow";
+      todoPrior.prior = "todoRow";
+      todoCheck.type = "radio";
+
+      tododelbutt.innerText = "Delete";
+      todoeditbutt.innerText = "Edit";
       p1.innerText = e.Title;
       p2.innerText = e.Description;
-      p4.innerText = e.Priority;
+      todoPrior.innerText = e.Priority;
 
-      todo.appendChild(p1);
-      todo.appendChild(p2);
-      todo.appendChild(p4);
+      todoHeader.appendChild(p1);
+      todoHeader.appendChild(tododelbutt);
+      todoDesc.appendChild(p2);
+      todoDesc.appendChild(todoeditbutt);
+      todoRight.appendChild(todoHeader);
+      todoRight.appendChild(todoDesc);
+      todoRight.appendChild(todoPrior);
+
+      todo.appendChild(todoCheck);
+      todo.appendChild(todoRight);
+
+      //todoes appearance code completion
 
       todoes.appendChild(todo);
+      console.log(
+        "consoling at end of todoesF todoArr: ",
+        todoArr,
+        typeof todoArr
+      );
     });
   }
 
@@ -56,10 +94,16 @@ function addTaskButtF() {
   receiver.Description = document.getElementById(classnames[1]).value;
   receiver.Status = selectS.value;
   receiver.Priority = selectP.value;
+
+  console.log("receiver before assign new values todoArr:", todoArr);
   console.log("receiver after assign new values receiver:", receiver);
 
   if (selectS.value == "To do") {
-    console.log("consoling from addTaskButtf receiver:", receiver);
+    console.log(
+      "consoling from addTaskButtf receiver:",
+      receiver,
+      typeof receiver
+    );
     console.log(
       "consoling from addTaskButtf before push value todoArr:",
       todoArr
@@ -193,6 +237,7 @@ function interface() {
 
     header.innerText = `${cardName[i]}`;
     addButt.innerText = "+ Add card";
+    addButt.className = "addButt";
     addButt.addEventListener("click", makeTaskDivshow);
     headerDiv.appendChild(header);
     headerDiv.appendChild(todoCount);
@@ -207,4 +252,4 @@ function interface() {
 interface();
 makeTaskDiv();
 
-//1 torliin status deer 2 tood assign hiihed suuliin assign hiisenteigee adilhan bolchood baina.
+//1 torliin status deer 2 todo assign hiihed suuliin assign hiisenteigee adilhan bolchood baina.
