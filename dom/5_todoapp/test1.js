@@ -6,3 +6,6 @@ console.log("arr", arr1);
 
 arr1.push(obj2);
 console.log("arr", arr1);
+arr1.push(obj1);
+arr1.push(obj1);
+console.log("arr", arr1);

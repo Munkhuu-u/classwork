@@ -11,17 +11,12 @@ let task;
 let classnames;
 
 function todoesF() {
-  console.log("consoling from todoesF selectP:", selectP);
-  console.log("consoling from todoesF selectS:", selectS);
-  console.log("consoling from todoesF receiver:", receiver);
-  console.log("consoling from todoesF todoArr:", todoArr);
-
+  //zurdag function
   if (todoArr != "" && selectS.value == "To do") {
     // duplicate this section after array changing bug cleared
     let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
     todoes.className = "todoes";
     todoes.innerHTML = "";
-    console.log("todoArr: ", todoArr);
     todoArr.map((e) => {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
@@ -44,7 +39,7 @@ function todoesF() {
       todoCheck.className = "todoCheck";
       todoHeader.className = "todoRow";
       todoDesc.className = "todoRow";
-      todoPrior.prior = "todoRow";
+      todoPrior.className = "todoRow";
       todoCheck.type = "radio";
 
       tododelbutt.innerText = "Delete";
@@ -63,15 +58,9 @@ function todoesF() {
 
       todo.appendChild(todoCheck);
       todo.appendChild(todoRight);
-
       //todoes appearance code completion
 
       todoes.appendChild(todo);
-      console.log(
-        "consoling at end of todoesF todoArr: ",
-        todoArr,
-        typeof todoArr
-      );
     });
   }
 
@@ -82,51 +71,47 @@ function todoesF() {
 
 let selectS;
 let selectP;
+
+function arrangeToArr() {
+  //zow array-ruu ni angildag F
+  if (selectS.value == "To do") {
+    receiver.id = `Todo${todoArr.length}`;
+    todoArr.push(receiver);
+  } else if (selectS.value == "In progress") {
+    receiver.id = `Inprogress${inprogArr.length}`;
+    inprogArr.push(receiver);
+  } else if (selectS.value == "Stuck") {
+    receiver.id = `stuck${stuck.length}`;
+    stuckArr.push(receiver);
+  } else if (selectS.value == "Done") {
+    receiver.id = `stuck${doneArr.length}`;
+    doneArr.push(receiver);
+  }
+}
+
 function addTaskButtF() {
-  // console.log("receiver before assign new values", receiver);
-  // receiver = "";
-  console.log(
-    "document.getElementById(classnames[0]).value:",
-    document.getElementById(classnames[0]).value
-  );
+  //here assign value to receiver
   receiver.Title = document.getElementById(classnames[0]).value;
-  // console.log("receiver.Title", receiver.Title);
   receiver.Description = document.getElementById(classnames[1]).value;
   receiver.Status = selectS.value;
   receiver.Priority = selectP.value;
-
-  console.log("receiver before assign new values todoArr:", todoArr);
-  console.log("receiver after assign new values receiver:", receiver);
-
-  if (selectS.value == "To do") {
-    console.log(
-      "consoling from addTaskButtf receiver:",
-      receiver,
-      typeof receiver
-    );
-    console.log(
-      "consoling from addTaskButtf before push value todoArr:",
-      todoArr
-    );
-    todoArr.push(receiver);
-    console.log("consoling from addTaskButtF todoArr:", todoArr);
-  } else if (selectS.value == "In progress") {
-    inprogArr.push(receiver);
-  } else if (selectS.value == "Stuck") {
-    stuckArr.push(receiver);
-  } else if (selectS.value == "Done") {
-    doneArr.push(receiver);
-  }
-
+  console.log(
+    "When push task button, receiver object:",
+    receiver,
+    typeof receiver
+  );
+  console.log("When push task button, Todo Array:", todoArr, typeof todoArr);
+  arrangeToArr();
   todoesF();
 }
 
 function makeTaskDivshow() {
+  // show when push add card button
   task.style.display = "flex";
-  console.log("todoArr:", todoArr);
 }
 
 function makeTaskDiv() {
+  //drawing task card view
   classnames = ["title", "desc", "status", "priority"];
   let innerText = ["Title", "Description", "Status", "Priority"];
 
@@ -217,6 +202,7 @@ function makeTaskDiv() {
 }
 
 function interface() {
+  //drawing interface
   cards = document.createElement("div");
   let cardName = ["To do", "In progress", "Stuck", "Done"];
 
@@ -251,5 +237,3 @@ function interface() {
 
 interface();
 makeTaskDiv();
-
-//1 torliin status deer 2 todo assign hiihed suuliin assign hiisenteigee adilhan bolchood baina.
