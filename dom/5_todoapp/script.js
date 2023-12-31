@@ -7,21 +7,37 @@ let inprogArr = new Array();
 let stuckArr = new Array();
 let doneArr = new Array();
 
+const deleteTodo = (e) => {
+  // dark baigaa towchluuriinhaa id-g awna.
+  // array-uudaas haina.
+  // oldson array bolon index-iinh ni dugaariig awna.
+  // olson dugaarluugaa handaad ustgana.
+  console.log("catched id", e.target.id);
+};
+
+function editTodo() {
+  // dark baigaa towchluuriinhaa id-g awna.
+  // array-uudaas haina.
+  // oldson array bolon index-iinh ni dugaariig awna.
+  // olson dugaarluugaa handaad shine array zarlaad awna.
+  // task div-iin value-uudiig ni shine uusgesene array-uudiin utgaar assign hiine.
+  // task div-iig haragduulna. tgd edit hiigeed save hiisniih ni daraa.
+}
+
 let task;
 let classnames;
-
-function todoesF() {
+function drawtodo() {
   //zurdag function
   if (todoArr != "" && selectS.value == "To do") {
     // duplicate this section after array changing bug cleared
     let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
     todoes.className = "todoes";
     todoes.innerHTML = "";
-    todoArr.map((e) => {
+
+    for (let i = 0; i < todoArr.length; i++) {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
       let p2 = document.createElement("p");
-
       todo.setAttribute("class", "todo");
 
       //todoes appearance code commence
@@ -43,10 +59,16 @@ function todoesF() {
       todoCheck.type = "radio";
 
       tododelbutt.innerText = "Delete";
+      tododelbutt.id = `TodoDelButtId${i}`; //change id value with array name
+      tododelbutt.addEventListener("click", deleteTodo);
+
       todoeditbutt.innerText = "Edit";
-      p1.innerText = e.Title;
-      p2.innerText = e.Description;
-      todoPrior.innerText = e.Priority;
+      todoeditbutt.id = `TodoEditButtId${i}`; //change id value with array name
+      todoeditbutt.addEventListener("click", editTodo);
+
+      p1.innerText = todoArr[i].Title;
+      p2.innerText = todoArr[i].Description;
+      todoPrior.innerText = todoArr[i].Priority;
 
       todoHeader.appendChild(p1);
       todoHeader.appendChild(tododelbutt);
@@ -61,7 +83,7 @@ function todoesF() {
       //todoes appearance code completion
 
       todoes.appendChild(todo);
-    });
+    }
   }
 
   document.getElementById(classnames[0]).value = "";
@@ -75,18 +97,21 @@ let selectP;
 function arrangeToArr() {
   //zow array-ruu ni angildag F
   if (selectS.value == "To do") {
-    receiver.id = `Todo${todoArr.length}`;
+    receiver.id = `Todo${todoArr.length + 1}`;
+    console.log("todoArr", todoArr);
     todoArr.push(receiver);
+    console.log("todoArr", todoArr);
   } else if (selectS.value == "In progress") {
-    receiver.id = `Inprogress${inprogArr.length}`;
+    receiver.id = `Inprogress${inprogArr.length + 1}`;
     inprogArr.push(receiver);
   } else if (selectS.value == "Stuck") {
-    receiver.id = `stuck${stuck.length}`;
+    receiver.id = `stuck${stuck.length + 1}`;
     stuckArr.push(receiver);
   } else if (selectS.value == "Done") {
-    receiver.id = `stuck${doneArr.length}`;
+    receiver.id = `stuck${doneArr.length + 1}`;
     doneArr.push(receiver);
   }
+  drawtodo();
 }
 
 function addTaskButtF() {
@@ -102,7 +127,6 @@ function addTaskButtF() {
   );
   console.log("When push task button, Todo Array:", todoArr, typeof todoArr);
   arrangeToArr();
-  todoesF();
 }
 
 function makeTaskDivshow() {
@@ -237,3 +261,5 @@ function interface() {
 
 interface();
 makeTaskDiv();
+
+//odoo barij awsan ID-iigaa ashiglaad ustgah bolon zasah uildel hiih heregtei
