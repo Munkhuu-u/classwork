@@ -1,39 +1,81 @@
 let root = document.getElementById("root");
 let cards;
 
-let receiver = {};
-let todoArr = new Array();
+// let receiver = {};
+let todoArr = [];
 let inprogArr = new Array();
 let stuckArr = new Array();
 let doneArr = new Array();
+let array = [];
 
-const deleteTodo = (e) => {
+function deleteTodo(id) {
   // dark baigaa towchluuriinhaa id-g awna.
   // array-uudaas haina.
   // oldson array bolon index-iinh ni dugaariig awna.
   // olson dugaarluugaa handaad ustgana.
-  console.log("catched id", e.target.id);
-};
+  console.log("delete function ajillaj baina");
+  console.log(id);
+  if (id.substring(0, 4) == "Todo") {
+    todoArr = todoArr.filter((e) => {
+      e.id != id;
+    });
+    console.log(todoArr);
+  } else if (id.substring(0, 4) == "Inpr") {
+    inprogArr = inprogArr.filter((e) => {
+      e.id != id;
+    });
+  } else if (id.substring(0, 4) == "Stuc") {
+    stuckArr = stuckArr.filter((e) => {
+      e.id != id;
+    });
+  } else if (id.substring(0, 4) == "Done") {
+    doneArr = doneArr.filter((e) => {
+      e.id != id;
+    });
+  }
 
-function editTodo() {
-  // dark baigaa towchluuriinhaa id-g awna.
-  // array-uudaas haina.
-  // oldson array bolon index-iinh ni dugaariig awna.
-  // olson dugaarluugaa handaad shine array zarlaad awna.
-  // task div-iin value-uudiig ni shine uusgesene array-uudiin utgaar assign hiine.
-  // task div-iig haragduulna. tgd edit hiigeed save hiisniih ni daraa.
+  drawtodo();
+}
+
+let putindex = "";
+function editTodo(id) {
+  let array;
+  if (id.substring(0, 4) == "Todo") {
+    array = todoArr;
+  } else if (id.substring(0, 4) == "Inpr") {
+    array = inprogArr;
+  } else if (id.substring(0, 4) == "Stuc") {
+    array = stuckArr;
+  } else if (id.substring(0, 4) == "Done") {
+    array = doneArr;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id == id) {
+      putindex = i;
+    }
+  }
+
+  document.getElementById("title").value = array[Number(putindex)].Title;
+  document.getElementById("desc").value = array[Number(putindex)].Description;
+  document.getElementById("Status").value = array[Number(putindex)].Status;
+  document.getElementById("Priority").value = array[Number(putindex)].Priority;
+
+  makeTaskDivshow();
 }
 
 let task;
 let classnames;
 function drawtodo() {
   //zurdag function
-  if (todoArr != "" && selectS.value == "To do") {
+  if (selectS.value == "To do") {
     // duplicate this section after array changing bug cleared
     let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
     todoes.className = "todoes";
     todoes.innerHTML = "";
-
+    console.log(todoes);
+    console.log("drawtodo ajillaj baina");
+    console.log(todoArr);
     for (let i = 0; i < todoArr.length; i++) {
       let todo = document.createElement("div");
       let p1 = document.createElement("p");
@@ -59,12 +101,18 @@ function drawtodo() {
       todoCheck.type = "radio";
 
       tododelbutt.innerText = "Delete";
-      tododelbutt.id = `TodoDelButtId${i}`; //change id value with array name
-      tododelbutt.addEventListener("click", deleteTodo);
+      tododelbutt.id = `Todo${i}`; //change id value with array name
+      tododelbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        deleteTodo(id);
+      });
 
       todoeditbutt.innerText = "Edit";
-      todoeditbutt.id = `TodoEditButtId${i}`; //change id value with array name
-      todoeditbutt.addEventListener("click", editTodo);
+      todoeditbutt.id = `Todo${i}`; //change id value with array name
+      todoeditbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        editTodo(id);
+      });
 
       p1.innerText = todoArr[i].Title;
       p2.innerText = todoArr[i].Description;
@@ -85,7 +133,6 @@ function drawtodo() {
       todoes.appendChild(todo);
     }
   }
-
   document.getElementById(classnames[0]).value = "";
   document.getElementById(classnames[1]).value = "";
   task.style.display = "none";
@@ -93,40 +140,48 @@ function drawtodo() {
 
 let selectS;
 let selectP;
-
-function arrangeToArr() {
-  //zow array-ruu ni angildag F
-  if (selectS.value == "To do") {
-    receiver.id = `Todo${todoArr.length + 1}`;
-    console.log("todoArr", todoArr);
-    todoArr.push(receiver);
-    console.log("todoArr", todoArr);
-  } else if (selectS.value == "In progress") {
-    receiver.id = `Inprogress${inprogArr.length + 1}`;
-    inprogArr.push(receiver);
-  } else if (selectS.value == "Stuck") {
-    receiver.id = `stuck${stuck.length + 1}`;
-    stuckArr.push(receiver);
-  } else if (selectS.value == "Done") {
-    receiver.id = `stuck${doneArr.length + 1}`;
-    doneArr.push(receiver);
-  }
-  drawtodo();
-}
-
 function addTaskButtF() {
   //here assign value to receiver
-  receiver.Title = document.getElementById(classnames[0]).value;
-  receiver.Description = document.getElementById(classnames[1]).value;
-  receiver.Status = selectS.value;
-  receiver.Priority = selectP.value;
-  console.log(
-    "When push task button, receiver object:",
-    receiver,
-    typeof receiver
-  );
-  console.log("When push task button, Todo Array:", todoArr, typeof todoArr);
-  arrangeToArr();
+  console.log(putindex);
+  let receiver = {};
+  if (putindex == "") {
+    receiver.Title = document.getElementById(classnames[0]).value;
+    receiver.Description = document.getElementById(classnames[1]).value;
+    receiver.Status = selectS.value;
+    receiver.Priority = selectP.value;
+
+    if (selectS.value == "To do") {
+      receiver.id = `Todo${todoArr.length}`;
+      todoArr.push(receiver);
+    } else if (selectS.value == "In progress") {
+      receiver.id = `Inpr${inprogArr.length}`;
+      inprogArr.push(receiver);
+    } else if (selectS.value == "Stuck") {
+      receiver.id = `Stuc${stuck.length}`;
+      stuckArr.push(receiver);
+    } else if (selectS.value == "Done") {
+      receiver.id = `Done${doneArr.length}`;
+      doneArr.push(receiver);
+    }
+  } else if (putindex != "") {
+    receiver.Title = document.getElementById(classnames[0]).value;
+    receiver.Description = document.getElementById(classnames[1]).value;
+    receiver.Status = selectS.value;
+    receiver.Priority = selectP.value;
+
+    if (selectS.value == "To do") {
+      todoArr.splice(putindex, 1, receiver);
+    } else if (selectS.value == "In progress") {
+      inprogArr.splice(putindex, 1, receiver);
+    } else if (selectS.value == "Stuck") {
+      stuckArr.splice(putindex, 1, receiver);
+    } else if (selectS.value == "Done") {
+      doneArr.splice(putindex, 1, receiver);
+    }
+    putindex = "";
+  }
+
+  drawtodo();
 }
 
 function makeTaskDivshow() {
@@ -134,8 +189,9 @@ function makeTaskDivshow() {
   task.style.display = "flex";
 }
 
-function makeTaskDiv() {
+function makeTaskDiv(title, description, status, priotity) {
   //drawing task card view
+  console.log("makeTaskDiv ajillaj baina");
   classnames = ["title", "desc", "status", "priority"];
   let innerText = ["Title", "Description", "Status", "Priority"];
 
@@ -146,24 +202,40 @@ function makeTaskDiv() {
   taskTitle.setAttribute("class", "taskTitle");
   task.appendChild(taskTitle);
 
-  for (let i = 0; i < 2; i++) {
-    let input = document.createElement("input");
-    let label = document.createElement("label");
-    input.id = `${classnames[i]}`;
-    label.for = `${classnames[i]}`;
-    label.innerText = `${innerText[i]}`;
-    task.appendChild(label);
-    task.appendChild(input);
-  }
+  let input0;
+  let label0;
+
+  input0 = document.createElement("input");
+  label0 = document.createElement("label");
+  input0.id = `${classnames[0]}`;
+  label0.for = `${classnames[0]}`;
+  label0.innerText = `${innerText[0]}`;
+  task.appendChild(label0);
+  task.appendChild(input0);
+  input0.innerText = `${title}`;
+
+  let input1;
+  let label1;
+
+  input1 = document.createElement("input");
+  label1 = document.createElement("label");
+  input1.id = `${classnames[1]}`;
+  label1.for = `${classnames[1]}`;
+  label1.innerText = `${innerText[1]}`;
+  task.appendChild(label1);
+  task.appendChild(input1);
+  input1.innerText = `${description}`;
+
   // let input = document.createElement("input");
-  let label1 = document.createElement("label");
+  let label2 = document.createElement("label");
 
   //STATUS SELECTOR
-  label1.for = `${classnames[2]}`;
-  label1.innerText = `${innerText[2]}`;
+  label2.for = `${classnames[2]}`;
+  label2.innerText = `${innerText[2]}`;
   selectS = document.createElement("select");
   selectS.setAttribute("name", `${innerText[2]}`);
   selectS.setAttribute("id", `${innerText[2]}`);
+  selectS.innerText = `${status}`;
 
   let opt1 = document.createElement("option");
   let opt2 = document.createElement("option");
@@ -180,7 +252,7 @@ function makeTaskDiv() {
   opt3.innerText = "Stuck";
   opt4.innerText = "Done";
 
-  task.appendChild(label1);
+  task.appendChild(label2);
   selectS.appendChild(opt1);
   selectS.appendChild(opt2);
   selectS.appendChild(opt3);
@@ -189,12 +261,13 @@ function makeTaskDiv() {
 
   ///PRIOTITY SELECTOR
 
-  let label2 = document.createElement("label");
-  label2.for = `${classnames[3]}`;
-  label2.innerText = `${innerText[3]}`;
+  let label3 = document.createElement("label");
+  label3.for = `${classnames[3]}`;
+  label3.innerText = `${innerText[3]}`;
   selectP = document.createElement("select");
-  selectP.setAttribute("name", `${innerText[2]}`);
-  selectP.setAttribute("id", `${innerText[2]}`);
+  selectP.setAttribute("name", `${innerText[3]}`);
+  selectP.setAttribute("id", `${innerText[3]}`);
+  selectP.innerText = `${priotity}`;
 
   let opt5 = document.createElement("option");
   let opt6 = document.createElement("option");
@@ -208,7 +281,7 @@ function makeTaskDiv() {
   opt6.innerText = "Medium";
   opt7.innerText = "Low";
 
-  task.appendChild(label2);
+  task.appendChild(label3);
   selectP.appendChild(opt5);
   selectP.appendChild(opt6);
   selectP.appendChild(opt7);
@@ -260,6 +333,4 @@ function interface() {
 }
 
 interface();
-makeTaskDiv();
-
-//odoo barij awsan ID-iigaa ashiglaad ustgah bolon zasah uildel hiih heregtei
+makeTaskDiv("", "", "", "");
