@@ -16,8 +16,10 @@ function deleteTodo(id) {
   console.log("delete function ajillaj baina");
   console.log(id);
   if (id.substring(0, 4) == "Todo") {
+    console.log(todoArr);
     todoArr = todoArr.filter((e) => {
       e.id != id;
+      console.log(e.id);
     });
     console.log(todoArr);
   } else if (id.substring(0, 4) == "Inpr") {
