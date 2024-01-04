@@ -18,30 +18,31 @@ function deleteTodo(id) {
   if (id.substring(0, 4) == "Todo") {
     console.log(todoArr);
     todoArr = todoArr.filter((e) => {
-      e.id != id;
-      console.log(e.id);
+      return e.id != id;
     });
     console.log(todoArr);
   } else if (id.substring(0, 4) == "Inpr") {
     inprogArr = inprogArr.filter((e) => {
-      e.id != id;
+      return e.id != id;
     });
   } else if (id.substring(0, 4) == "Stuc") {
     stuckArr = stuckArr.filter((e) => {
-      e.id != id;
+      return e.id != id;
     });
   } else if (id.substring(0, 4) == "Done") {
     doneArr = doneArr.filter((e) => {
-      e.id != id;
+      return e.id != id;
     });
   }
 
   drawtodo();
 }
 
-let putindex = "";
+let putindex = -1;
 function editTodo(id) {
   let array;
+  console.log(id);
+  console.log(array);
   if (id.substring(0, 4) == "Todo") {
     array = todoArr;
   } else if (id.substring(0, 4) == "Inpr") {
@@ -58,6 +59,9 @@ function editTodo(id) {
     }
   }
 
+  console.log(array);
+  console.log(putindex);
+  console.log(array[putindex]);
   document.getElementById("title").value = array[Number(putindex)].Title;
   document.getElementById("desc").value = array[Number(putindex)].Description;
   document.getElementById("Status").value = array[Number(putindex)].Status;
@@ -70,6 +74,8 @@ let task;
 let classnames;
 function drawtodo() {
   //zurdag function
+
+  //todo-g zurj baigaa
   if (selectS.value == "To do") {
     // duplicate this section after array changing bug cleared
     let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
@@ -103,9 +109,214 @@ function drawtodo() {
       todoCheck.type = "radio";
 
       tododelbutt.innerText = "Delete";
-      tododelbutt.id = `Todo${i}`; //change id value with array name
+      tododelbutt.id = `${todoArr[i].id}`; //change id value with array name
       tododelbutt.addEventListener("click", (e) => {
         let id = e.target.id;
+        console.log(e.target);
+        deleteTodo(id);
+      });
+
+      todoeditbutt.innerText = "Edit";
+      todoeditbutt.id = `Todo${i}`; //change id value with array name
+      todoeditbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        editTodo(id);
+      });
+
+      p1.innerText = todoArr[i].Title;
+      p2.innerText = todoArr[i].Description;
+      todoPrior.innerText = todoArr[i].Priority;
+
+      todoHeader.appendChild(p1);
+      todoHeader.appendChild(tododelbutt);
+      todoDesc.appendChild(p2);
+      todoDesc.appendChild(todoeditbutt);
+      todoRight.appendChild(todoHeader);
+      todoRight.appendChild(todoDesc);
+      todoRight.appendChild(todoPrior);
+
+      todo.appendChild(todoCheck);
+      todo.appendChild(todoRight);
+      //todoes appearance code completion
+
+      todoes.appendChild(todo);
+    }
+  }
+
+  //In progress-g zurj baigaa
+  if (selectS.value == "To do") {
+    // duplicate this section after array changing bug cleared
+    let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+    todoes.className = "todoes";
+    todoes.innerHTML = "";
+    console.log(todoes);
+    console.log("drawtodo ajillaj baina");
+    console.log(todoArr);
+    for (let i = 0; i < todoArr.length; i++) {
+      let todo = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      todo.setAttribute("class", "todo");
+
+      //todoes appearance code commence
+      let todoCheck = document.createElement("input");
+      let todoRight = document.createElement("div");
+      let todoHeader = document.createElement("div");
+      let todoDesc = document.createElement("div");
+      let todoPrior = document.createElement("p");
+      let tododelbutt = document.createElement("button");
+      let todoeditbutt = document.createElement("button");
+
+      tododelbutt.className = "todoDel";
+      todoeditbutt.className = "todoDel";
+      todoRight.className = "todoRight";
+      todoCheck.className = "todoCheck";
+      todoHeader.className = "todoRow";
+      todoDesc.className = "todoRow";
+      todoPrior.className = "todoRow";
+      todoCheck.type = "radio";
+
+      tododelbutt.innerText = "Delete";
+      tododelbutt.id = `${todoArr[i].id}`; //change id value with array name
+      tododelbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        console.log(e.target);
+        deleteTodo(id);
+      });
+
+      todoeditbutt.innerText = "Edit";
+      todoeditbutt.id = `Todo${i}`; //change id value with array name
+      todoeditbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        editTodo(id);
+      });
+
+      p1.innerText = todoArr[i].Title;
+      p2.innerText = todoArr[i].Description;
+      todoPrior.innerText = todoArr[i].Priority;
+
+      todoHeader.appendChild(p1);
+      todoHeader.appendChild(tododelbutt);
+      todoDesc.appendChild(p2);
+      todoDesc.appendChild(todoeditbutt);
+      todoRight.appendChild(todoHeader);
+      todoRight.appendChild(todoDesc);
+      todoRight.appendChild(todoPrior);
+
+      todo.appendChild(todoCheck);
+      todo.appendChild(todoRight);
+      //todoes appearance code completion
+
+      todoes.appendChild(todo);
+    }
+  }
+
+  //stuck-g zurj baigaa
+  if (selectS.value == "To do") {
+    // duplicate this section after array changing bug cleared
+    let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+    todoes.className = "todoes";
+    todoes.innerHTML = "";
+    console.log(todoes);
+    console.log("drawtodo ajillaj baina");
+    console.log(todoArr);
+    for (let i = 0; i < todoArr.length; i++) {
+      let todo = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      todo.setAttribute("class", "todo");
+
+      //todoes appearance code commence
+      let todoCheck = document.createElement("input");
+      let todoRight = document.createElement("div");
+      let todoHeader = document.createElement("div");
+      let todoDesc = document.createElement("div");
+      let todoPrior = document.createElement("p");
+      let tododelbutt = document.createElement("button");
+      let todoeditbutt = document.createElement("button");
+
+      tododelbutt.className = "todoDel";
+      todoeditbutt.className = "todoDel";
+      todoRight.className = "todoRight";
+      todoCheck.className = "todoCheck";
+      todoHeader.className = "todoRow";
+      todoDesc.className = "todoRow";
+      todoPrior.className = "todoRow";
+      todoCheck.type = "radio";
+
+      tododelbutt.innerText = "Delete";
+      tododelbutt.id = `${todoArr[i].id}`; //change id value with array name
+      tododelbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        console.log(e.target);
+        deleteTodo(id);
+      });
+
+      todoeditbutt.innerText = "Edit";
+      todoeditbutt.id = `Todo${i}`; //change id value with array name
+      todoeditbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        editTodo(id);
+      });
+
+      p1.innerText = todoArr[i].Title;
+      p2.innerText = todoArr[i].Description;
+      todoPrior.innerText = todoArr[i].Priority;
+
+      todoHeader.appendChild(p1);
+      todoHeader.appendChild(tododelbutt);
+      todoDesc.appendChild(p2);
+      todoDesc.appendChild(todoeditbutt);
+      todoRight.appendChild(todoHeader);
+      todoRight.appendChild(todoDesc);
+      todoRight.appendChild(todoPrior);
+
+      todo.appendChild(todoCheck);
+      todo.appendChild(todoRight);
+      //todoes appearance code completion
+
+      todoes.appendChild(todo);
+    }
+  }
+
+  //Done-g zurj baigaa
+  if (selectS.value == "To do") {
+    // duplicate this section after array changing bug cleared
+    let todoes = document.getElementById("todoes0"); //ali div dotor baigaagaas hamaarch Id ni oorchlogdono
+    todoes.className = "todoes";
+    todoes.innerHTML = "";
+    console.log(todoes);
+    console.log("drawtodo ajillaj baina");
+    console.log(todoArr);
+    for (let i = 0; i < todoArr.length; i++) {
+      let todo = document.createElement("div");
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      todo.setAttribute("class", "todo");
+
+      //todoes appearance code commence
+      let todoCheck = document.createElement("input");
+      let todoRight = document.createElement("div");
+      let todoHeader = document.createElement("div");
+      let todoDesc = document.createElement("div");
+      let todoPrior = document.createElement("p");
+      let tododelbutt = document.createElement("button");
+      let todoeditbutt = document.createElement("button");
+
+      tododelbutt.className = "todoDel";
+      todoeditbutt.className = "todoDel";
+      todoRight.className = "todoRight";
+      todoCheck.className = "todoCheck";
+      todoHeader.className = "todoRow";
+      todoDesc.className = "todoRow";
+      todoPrior.className = "todoRow";
+      todoCheck.type = "radio";
+
+      tododelbutt.innerText = "Delete";
+      tododelbutt.id = `${todoArr[i].id}`; //change id value with array name
+      tododelbutt.addEventListener("click", (e) => {
+        let id = e.target.id;
+        console.log(e.target);
         deleteTodo(id);
       });
 
@@ -144,9 +355,11 @@ let selectS;
 let selectP;
 function addTaskButtF() {
   //here assign value to receiver
-  console.log(putindex);
   let receiver = {};
-  if (putindex == "") {
+  console.log(putindex);
+  console.log(putindex == "");
+  console.log(putindex != -1);
+  if (putindex == -1) {
     receiver.Title = document.getElementById(classnames[0]).value;
     receiver.Description = document.getElementById(classnames[1]).value;
     receiver.Status = selectS.value;
@@ -165,22 +378,29 @@ function addTaskButtF() {
       receiver.id = `Done${doneArr.length}`;
       doneArr.push(receiver);
     }
-  } else if (putindex != "") {
+  } else if (putindex >= 0) {
     receiver.Title = document.getElementById(classnames[0]).value;
     receiver.Description = document.getElementById(classnames[1]).value;
     receiver.Status = selectS.value;
     receiver.Priority = selectP.value;
 
     if (selectS.value == "To do") {
+      receiver.id = `Todo${putindex}`;
       todoArr.splice(putindex, 1, receiver);
     } else if (selectS.value == "In progress") {
+      receiver.id = `Inpr${putindex}`;
       inprogArr.splice(putindex, 1, receiver);
     } else if (selectS.value == "Stuck") {
+      receiver.id = `Stuc${putindex}`;
       stuckArr.splice(putindex, 1, receiver);
     } else if (selectS.value == "Done") {
+      receiver.id = `Done${putindex}`;
       doneArr.splice(putindex, 1, receiver);
     }
-    putindex = "";
+    putindex = -1;
+    console.log(todoArr);
+    console.log(putindex);
+    console.log(todoArr[putindex]);
   }
 
   drawtodo();
@@ -336,3 +556,4 @@ function interface() {
 
 interface();
 makeTaskDiv("", "", "", "");
+drawtodo();
