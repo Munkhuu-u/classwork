@@ -66,7 +66,6 @@ function editTodo(id) {
   document.getElementById("desc").value = array[Number(putindex)].Description;
   document.getElementById("Status").value = array[Number(putindex)].Status;
   document.getElementById("Priority").value = array[Number(putindex)].Priority;
-
   makeTaskDivshow();
 }
 

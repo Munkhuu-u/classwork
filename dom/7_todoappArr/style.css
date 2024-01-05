@@ -3,3 +3,7 @@
   padding: 0;
   margin: 0;
 }
+.board {
+  border: solid 1px black;
+  border-radius: 5px;
+}
