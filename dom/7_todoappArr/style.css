@@ -3,6 +3,21 @@
   padding: 0;
   margin: 0;
 }
+body,
+.cards,
+.boards {
+  padding: 10px;
+}
+.boards,
+.popup,
+.cards div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
 .board {
   border: solid 1px black;
   border-radius: 5px;

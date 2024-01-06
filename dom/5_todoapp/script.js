@@ -443,6 +443,7 @@ function makeTaskDiv(title, description, status, priotity) {
   //STATUS SELECTOR
   label2.for = `${classnames[2]}`;
   label2.innerText = `${innerText[2]}`;
+
   selectS = document.createElement("select");
   selectS.setAttribute("name", `${innerText[2]}`);
   selectS.setAttribute("id", `${innerText[2]}`);
