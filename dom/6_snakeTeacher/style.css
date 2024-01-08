@@ -1,0 +1,31 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 840px;
+    height: 840px;
+    border: 1px solid grey;
+  }
+  .box {
+    width: 20px;
+    height: 20px;
+    border: solid .1px lightgray;
+  }
+  .active {
+    background-color: green;
+    border: solid .1px green;
+  }
+  /* .head {
+    background-color: red;
+  } */
+  
+  .stopbtn,
+  .startbtn {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    margin-bottom: 20px;
+  }
